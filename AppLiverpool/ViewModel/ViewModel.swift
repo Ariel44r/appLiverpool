@@ -10,6 +10,15 @@ import UIKit
 
 class ViewModel: HTTPLayer {
     static var shared: ViewModel = ViewModel()
+    let userDefaultKey: String = "lastQueryData"
+    var lastDataQuery: APIResponse? {
+        guard let jsonString = UserDefaults.standard.value(forKey: userDefaultKey) as? String,
+        let data = jsonString.data(using: .utf8),
+        let object = try? JSONDecoder().decode(APIResponse.self, from: data),
+        let apiResponse = object as? APIResponse else { return nil }
+        return apiResponse
+        
+    }
     
     private override init() { }
     var apiResponse: APIResponse!
@@ -25,6 +34,11 @@ class ViewModel: HTTPLayer {
             self?.apiResponse = response
             onSuccess(response)
         }, onError: onError)
+    }
+    func saveLastData(response: APIResponse) {
+        guard let jsonString: String = response.encode() else { return }
+        UserDefaults.standard.set(jsonString, forKey: userDefaultKey)
+        
     }
 }
 
@@ -43,13 +57,14 @@ extension ViewModel {
 
 extension ViewModel {
     func set(with view: ItemCollectionViewCell) {
-        guard let record = records?[view.tag] else { return }
-        view.containerView?.makeViewWith(features: [.rounded, .bordered(.lightGray, 1)])
-        view.imageViewCell?.getImage(from: record.smImage ?? "")
-        view.titleLabel?.text = record.productDisplayName ?? ""
-        view.priceLabel?.text = "\(record.listPrice ?? 0)".currencyInputFormatting()
-        view.placeLabel?.text = record.marketplaceSLMessage ?? ""
-        
+        DispatchQueue.main.async { [weak self] in
+            guard let record = self?.lastDataQuery?.plpResults?.records?[view.tag] else { return }
+            view.containerView?.makeViewWith(features: [.rounded, .bordered(.lightGray, 1)])
+            view.imageViewCell?.getImage(from: record.smImage ?? "")
+            view.titleLabel?.text = record.productDisplayName ?? ""
+            view.priceLabel?.text = "\(record.listPrice ?? 0)".currencyInputFormatting()
+            view.placeLabel?.text = record.marketplaceSLMessage ?? ""
+        }
     }
     func set(with view: ItemTableViewCell) {
         guard let record = records?[view.tag] else { return }
@@ -58,6 +73,5 @@ extension ViewModel {
         view.titleLabel?.text = record.productDisplayName ?? ""
         view.priceLabel?.text = "\(record.listPrice ?? 0)".currencyInputFormatting()
         view.placeLabel?.text = record.marketplaceSLMessage ?? ""
-        
     }
 }

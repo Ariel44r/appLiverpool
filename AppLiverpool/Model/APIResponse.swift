@@ -25,6 +25,13 @@ class APIResponse: Wrappable {
         pageType    =   try values.decode(String.self, forKey: .pageType)
         plpResults  =   try values.decode(PLPResults.self, forKey: .plpResults)
     }
+    override func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try? container.encode(status, forKey: .status)
+        try? container.encode(pageType, forKey: .pageType)
+        try? container.encode(plpResults, forKey: .plpResults)
+        
+    }
 }
 
 class Status: Wrappable {
@@ -40,6 +47,12 @@ class Status: Wrappable {
         let values  =   try decoder.container(keyedBy: CodingKeys.self)
         status      =   try values.decode(String.self, forKey: .status)
         statusCode  =   try values.decode(Int.self, forKey: .statusCode)
+        
+    }
+    override func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try? container.encode(status, forKey: .status)
+        try? container.encode(statusCode, forKey: .statusCode)
         
     }
 }
@@ -66,6 +79,15 @@ class PLPResults: Wrappable {
         sortOptions =   try values.decode([SortOption].self, forKey: .sortOptions)
         refinementGroups    =   try? values.decode([RefinementGroup].self, forKey: .refinementGroups)
         records     =   try? values.decode([Record].self, forKey: .records)
+    }
+    override func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try? container.encode(label, forKey: .label)
+        try? container.encode(plpState, forKey: .plpState)
+        try? container.encode(sortOptions, forKey: .sortOptions)
+        try? container.encode(refinementGroups, forKey: .refinementGroups)
+        try? container.encode(records, forKey: .records)
+        
     }
 }
 
@@ -99,6 +121,17 @@ class PLPState: Wrappable {
         totalNumRecs    =   try values.decode(Int.self, forKey: .totalNumRecs)
         
     }
+    override func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try? container.encode(categoryId, forKey: .categoryId)
+        try? container.encode(currentSortOption, forKey: .currentSortOption)
+        try? container.encode(currentFilters, forKey: .currentFilters)
+        try? container.encode(firstRecNum, forKey: .firstRecNum)
+        try? container.encode(lastRecNum, forKey: .lastRecNum)
+        try? container.encode(recsPerPage, forKey: .recsPerPage)
+        try? container.encode(totalNumRecs, forKey: .totalNumRecs)
+        
+    }
 }
 
 class SortOption: Wrappable {
@@ -115,6 +148,11 @@ class SortOption: Wrappable {
         sortBy      =   try values.decode(String.self, forKey: .sortBy)
         label       =   try values.decode(String.self, forKey: .label)
         
+    }
+    override func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try? container.encode(sortBy, forKey: .sortBy)
+        try? container.encode(label, forKey: .label)
     }
 }
 
@@ -138,6 +176,14 @@ class RefinementGroup: Wrappable {
         multiSelect =   try values.decode(Bool.self, forKey: .multiSelect)
         dimensionName   =   try values.decode(String.self, forKey: .dimensionName)
     }
+    override func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try? container.encode(name, forKey: .name)
+        try? container.encode(refinement, forKey: .refinement)
+        try? container.encode(multiSelect, forKey: .multiSelect)
+        try? container.encode(dimensionName, forKey: .dimensionName)
+        
+    }
 }
 
 class Refinement: Wrappable {
@@ -160,6 +206,13 @@ class Refinement: Wrappable {
         refinementId    =   try values.decode(String.self, forKey: .refinementId)
         selected    =   try values.decode(Bool.self, forKey: .selected)
         
+    }
+    override func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try? container.encode(count, forKey: .count)
+        try? container.encode(label, forKey: .label)
+        try? container.encode(refinementId, forKey: .refinementId)
+        try? container.encode(selected, forKey: .selected)
     }
 }
 
@@ -238,6 +291,32 @@ class Record: Wrappable {
         variantsColor   =   try? values.decode([VariantColor].self, forKey: .variantsColor)
         
     }
+    override func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try? container.encode(productId, forKey: .productId)
+        try? container.encode(skuRepositoryId, forKey: .skuRepositoryId)
+        try? container.encode(productDisplayName, forKey: .productDisplayName)
+        try? container.encode(productType, forKey: .productType)
+        try? container.encode(productRatingCount, forKey: .productRatingCount)
+        try? container.encode(productAvgRating, forKey: .productAvgRating)
+        try? container.encode(listPrice, forKey: .listPrice)
+        try? container.encode(minimumListPrice, forKey: .minimumListPrice)
+        try? container.encode(maximumListPrice, forKey: .maximumListPrice)
+        try? container.encode(promoPrice, forKey: .promoPrice)
+        try? container.encode(minimumPromoPrice, forKey: .minimumPromoPrice)
+        try? container.encode(maximumPromoPrice, forKey: .maximumPromoPrice)
+        try? container.encode(isHybrid, forKey: .isHybrid)
+        try? container.encode(marketplaceSLMessage, forKey: .marketplaceSLMessage)
+        try? container.encode(marketplaceBTMessage, forKey: .marketplaceBTMessage)
+        try? container.encode(isMarketPlace, forKey: .isMarketPlace)
+        try? container.encode(smImage, forKey: .smImage)
+        try? container.encode(lgImage, forKey: .lgImage)
+        try? container.encode(xlImage, forKey: .xlImage)
+        try? container.encode(groupType, forKey: .groupType)
+        try? container.encode(plpFlags, forKey: .plpFlags)
+        try? container.encode(variantsColor, forKey: .variantsColor)
+        
+    }
 }
 
 class PLPFlag: Wrappable { }
@@ -257,6 +336,13 @@ class VariantColor: Wrappable {
         colorName   =   try values.decode(String.self, forKey: .colorName)
         colorHex    =   try values.decode(String.self, forKey: .colorHex)
         colorImageURL   =   try values.decode(String.self, forKey: .colorImageURL)
+        
+    }
+    override func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try? container.encode(colorName, forKey: .colorName)
+        try? container.encode(colorHex, forKey: .colorHex)
+        try? container.encode(colorImageURL, forKey: .colorImageURL)
         
     }
 }

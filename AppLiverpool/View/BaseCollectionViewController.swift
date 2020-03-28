@@ -16,6 +16,7 @@ class BaseCollectionViewController: UICollectionViewController {
     var resultsController: ResultsTableViewController!
     var viewModel: ViewModel!
     var pageCounter: Int!
+    var lastDataQuery: APIResponse!
     
     fileprivate let sectionInsets = UIEdgeInsets(top: 10.0, left: 5.0, bottom: 10.0, right: 5.0)
     fileprivate let numberOfItems: Int = 5
@@ -38,8 +39,13 @@ class BaseCollectionViewController: UICollectionViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.masterColor]
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.masterColor]
         setSearchController()
-        searchFor(text: "xbox")
-        
+        if let lastDataQuery = viewModel?.lastDataQuery {
+            self.lastDataQuery = lastDataQuery
+            collectionView?.reloadData()
+        } else {
+            searchFor(text: "xbox")
+            
+        }
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -67,7 +73,6 @@ class BaseCollectionViewController: UICollectionViewController {
                 let heightPerItem = availableHeight / itemsPerHeight
                 
                 self.layout = UICollectionViewFlowLayout()
-    //            self.layout.scrollDirection = .horizontal
                 self.layout?.itemSize = CGSize(width: widthPerItem, height: heightPerItem)
                 self.layout?.minimumInteritemSpacing = 5
                 self.layout?.minimumLineSpacing = 5
@@ -82,6 +87,8 @@ class BaseCollectionViewController: UICollectionViewController {
     func searchFor(text: String) {
         viewModel?.getItems(with: text.uppercased(), pageNumber: pageCounter, itemsPerPage: 20, onSuccess: { apiResponse in
             DispatchQueue.main.async { [weak self] in
+                self?.viewModel?.saveLastData(response: apiResponse)
+                self?.lastDataQuery = apiResponse
                 self?.collectionView?.reloadData()
             }
         }, onError: { error in
@@ -109,7 +116,7 @@ class BaseCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.numberOfItems ?? 0
+        return self.lastDataQuery?.plpResults?.records?.count ?? 0
         
     }
 
