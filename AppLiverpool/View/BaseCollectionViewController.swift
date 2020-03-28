@@ -13,6 +13,7 @@ private let reuseIdentifier = "CollectionCell"
 class BaseCollectionViewController: UICollectionViewController {
 
     var searchController: UISearchController!
+    var resultsController: ResultsTableViewController!
     var viewModel: ViewModel!
     var pageCounter: Int!
     
@@ -47,9 +48,12 @@ class BaseCollectionViewController: UICollectionViewController {
     func setSearchController() {
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "Cancelar"
         navigationController?.navigationBar.isTranslucent = true
-        searchController = UISearchController(searchResultsController: nil)
+        resultsController = ResultsTableViewController(nibName: "ResultsTableViewController", bundle: nil)
+        searchController = UISearchController(searchResultsController: resultsController)
         navigationItem.searchController = searchController
         searchController?.searchBar.tintColor = .masterColor
+        searchController?.searchBar.delegate = self
+        
     }
 
     // MARK: UICollectionViewDataSource
@@ -103,4 +107,20 @@ class BaseCollectionViewController: UICollectionViewController {
     }
     */
 
+}
+
+extension BaseCollectionViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        debugPrint("didBeginEditing")
+        
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        debugPrint("searchButtonClicked")
+        
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        debugPrint("textDidChange: \(searchText)")
+        
+    }
 }
