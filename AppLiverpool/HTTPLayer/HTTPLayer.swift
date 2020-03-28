@@ -11,7 +11,6 @@ import Foundation
 class HTTPLayer: NSObject {
     var request: URLRequest!
     var tokenURL: String?
-    static var token: String?
     
     func sendHTTPRequest<T: Wrappable>(with features: [RequestFeature], onSuccess: @escaping Response<T>, onError: @escaping ErrorHandler<APIError>) {
         setRequest(with: features)

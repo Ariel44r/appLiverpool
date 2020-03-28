@@ -1,5 +1,5 @@
 //
-//  API.swift
+//  APIResponse.swift
 //  AppLiverpool
 //
 //  Created by ARIEL DIAZ on 28/03/20.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-class API: HTTPLayer {
+class APIResponse: Wrappable {
     
 }
