@@ -15,6 +15,9 @@
 		B00CD999242FA3B90045F9FB /* AppLiverpoolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00CD998242FA3B90045F9FB /* AppLiverpoolTests.swift */; };
 		B00CD9A4242FA3B90045F9FB /* AppLiverpoolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00CD9A3242FA3B90045F9FB /* AppLiverpoolUITests.swift */; };
 		B0A54CA2242FA80500C52FCD /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A54CA1242FA80500C52FCD /* BaseTableViewController.swift */; };
+		B0A54CA4242FB2F400C52FCD /* Wrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A54CA3242FB2F400C52FCD /* Wrappable.swift */; };
+		B0A54CA6242FB78A00C52FCD /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A54CA5242FB78A00C52FCD /* URLSessionExtension.swift */; };
+		B0A54CA8242FBA1B00C52FCD /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A54CA7242FBA1B00C52FCD /* UIColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		B00CD9A3242FA3B90045F9FB /* AppLiverpoolUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLiverpoolUITests.swift; sourceTree = "<group>"; };
 		B00CD9A5242FA3B90045F9FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0A54CA1242FA80500C52FCD /* BaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		B0A54CA3242FB2F400C52FCD /* Wrappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wrappable.swift; sourceTree = "<group>"; };
+		B0A54CA5242FB78A00C52FCD /* URLSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtension.swift; sourceTree = "<group>"; };
+		B0A54CA7242FBA1B00C52FCD /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,9 @@
 				B00CD981242FA3B60045F9FB /* AppDelegate.swift */,
 				B00CD983242FA3B60045F9FB /* SceneDelegate.swift */,
 				B0A54CA1242FA80500C52FCD /* BaseTableViewController.swift */,
+				B0A54CA3242FB2F400C52FCD /* Wrappable.swift */,
+				B0A54CA5242FB78A00C52FCD /* URLSessionExtension.swift */,
+				B0A54CA7242FBA1B00C52FCD /* UIColorExtension.swift */,
 				B00CD987242FA3B60045F9FB /* Main.storyboard */,
 				B00CD98A242FA3B90045F9FB /* Assets.xcassets */,
 				B00CD98C242FA3B90045F9FB /* LaunchScreen.storyboard */,
@@ -259,6 +268,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0A54CA8242FBA1B00C52FCD /* UIColorExtension.swift in Sources */,
+				B0A54CA6242FB78A00C52FCD /* URLSessionExtension.swift in Sources */,
+				B0A54CA4242FB2F400C52FCD /* Wrappable.swift in Sources */,
 				B00CD982242FA3B60045F9FB /* AppDelegate.swift in Sources */,
 				B0A54CA2242FA80500C52FCD /* BaseTableViewController.swift in Sources */,
 				B00CD984242FA3B60045F9FB /* SceneDelegate.swift in Sources */,

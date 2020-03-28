@@ -21,9 +21,9 @@ class BaseTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         title = "Home"
-        navigationController?.navigationBar.isTranslucent = true
-        searchController = UISearchController(searchResultsController: nil)
-        navigationItem.searchController = searchController
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.masterColor]
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.masterColor]
+        setSearchController()
         
     }
 
@@ -37,6 +37,14 @@ class BaseTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 0
+    }
+    
+    func setSearchController() {
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "Cancelar"
+        navigationController?.navigationBar.isTranslucent = true
+        searchController = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = searchController
+        searchController?.searchBar.tintColor = .masterColor
     }
 
     /*
