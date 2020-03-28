@@ -8,9 +8,17 @@
 
 import Foundation
 
+enum RequestFeature {
+    case endPoint(String)
+    case mimeType(MimeType)
+    case method(HTTPMethod)
+    case inputData(Data?)
+    case body(JSON)
+    case headers([String: String])
+}
+
 class HTTPLayer: NSObject {
     var request: URLRequest!
-    var tokenURL: String?
     
     func sendHTTPRequest<T: Wrappable>(with features: [RequestFeature], onSuccess: @escaping Response<T>, onError: @escaping ErrorHandler<APIError>) {
         setRequest(with: features)
@@ -34,7 +42,6 @@ class HTTPLayer: NSObject {
                 guard let url = URL(string: endPoint) else { return }
                 request = URLRequest(url: url)
                 debugPrint("[REQUEST: \(endPoint)]")
-            case .tokenURL(let url):        tokenURL = url
             case .mimeType(let mimeType):   request?.setValue(mimeType.rawValue, forHTTPHeaderField: "Content-Type")
             case .method(let method):       request?.httpMethod = method.rawValue
             case .inputData(let data):      request?.httpBody = data

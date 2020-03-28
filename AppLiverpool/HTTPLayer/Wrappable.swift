@@ -29,13 +29,3 @@ enum MimeType: String {
     case json="application/json"
     
 }
-
-enum RequestFeature {
-    case endPoint(String)
-    case mimeType(MimeType)
-    case method(HTTPMethod)
-    case inputData(Data?)
-    case body(JSON)
-    case headers([String: String])
-    case tokenURL(String)
-}

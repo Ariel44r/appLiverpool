@@ -11,6 +11,7 @@ import UIKit
 class BaseTableViewController: UITableViewController {
     
     var searchController: UISearchController!
+    var viewModel: ViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +21,9 @@ class BaseTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        title = "Home"
+        title = "Liverpool"
+        ViewModel.reset()
+        viewModel = ViewModel.shared
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.masterColor]
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.masterColor]
         setSearchController()
@@ -28,7 +31,6 @@ class BaseTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
