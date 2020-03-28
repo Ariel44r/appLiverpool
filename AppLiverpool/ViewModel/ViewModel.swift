@@ -14,9 +14,8 @@ class ViewModel: HTTPLayer {
     var lastDataQuery: APIResponse? {
         guard let jsonString = UserDefaults.standard.value(forKey: userDefaultKey) as? String,
         let data = jsonString.data(using: .utf8),
-        let object = try? JSONDecoder().decode(APIResponse.self, from: data),
-        let apiResponse = object as? APIResponse else { return nil }
-        return apiResponse
+        let object = try? JSONDecoder().decode(APIResponse.self, from: data) else { return nil }
+        return object
         
     }
     
