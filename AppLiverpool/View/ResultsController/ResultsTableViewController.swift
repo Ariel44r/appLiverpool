@@ -19,6 +19,7 @@ class ResultsTableViewController: BaseTableViewController {
         viewModel = ViewModel.shared
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         pageCounter = 1
+        tableView?.keyboardDismissMode = .onDrag
         
     }
     
@@ -43,9 +44,14 @@ class ResultsTableViewController: BaseTableViewController {
         return viewModel?.records?.count ?? 0
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         weak var cell: ItemTableViewCell! = UIView.fromNib()
-        cell.makeViewWith(features: [.color(.red)])
+        cell.tag = indexPath.row
+        viewModel?.set(with: cell)
         return cell
         
     }
@@ -108,8 +114,8 @@ extension ResultsTableViewController: UISearchBarDelegate {
         
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        debugPrint("textDidChange: \(searchText)")
-        searchFor(text: searchText)
-        
+        if searchText != "" && searchText != "" {
+            searchFor(text: searchText)
+        }
     }
 }

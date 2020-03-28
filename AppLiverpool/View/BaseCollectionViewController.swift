@@ -98,6 +98,7 @@ class BaseCollectionViewController: UICollectionViewController {
         navigationItem.searchController = searchController
         searchController?.searchBar.tintColor = .masterColor
         searchController?.searchBar.delegate = resultsController
+        searchController.delegate = self
         
     }
 
@@ -155,4 +156,18 @@ class BaseCollectionViewController: UICollectionViewController {
     }
     */
 
+}
+
+extension BaseCollectionViewController: UISearchControllerDelegate {
+    func presentSearchController(_ searchController: UISearchController) {
+        debugPrint("presentSearchController")
+    }
+    
+    func willDismissSearchController(_ searchController: UISearchController) {
+        debugPrint("willDismissSearchController")
+    }
+    
+    func willPresentSearchController(_ searchController: UISearchController) {
+        debugPrint("willPresentSearchController")
+    }
 }

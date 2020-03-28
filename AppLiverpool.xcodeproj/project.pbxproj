@@ -30,6 +30,7 @@
 		B0A54CC2242FED6400C52FCD /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A54CC1242FED6400C52FCD /* UIViewExtension.swift */; };
 		B0A54CC8242FFF1F00C52FCD /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A54CC6242FFF1F00C52FCD /* ItemTableViewCell.swift */; };
 		B0A54CC9242FFF1F00C52FCD /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A54CC7242FFF1F00C52FCD /* ItemTableViewCell.xib */; };
+		B0A54CCC243002D000C52FCD /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A54CCB243002D000C52FCD /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		B0A54CC1242FED6400C52FCD /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		B0A54CC6242FFF1F00C52FCD /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		B0A54CC7242FFF1F00C52FCD /* ItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTableViewCell.xib; sourceTree = "<group>"; };
+		B0A54CCB243002D000C52FCD /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				B0A54CA7242FBA1B00C52FCD /* UIColorExtension.swift */,
 				B0A54CB6242FE69D00C52FCD /* UIImageViewExtension.swift */,
 				B0A54CC1242FED6400C52FCD /* UIViewExtension.swift */,
+				B0A54CCB243002D000C52FCD /* StringExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				B0A54CA8242FBA1B00C52FCD /* UIColorExtension.swift in Sources */,
 				B0A54CA6242FB78A00C52FCD /* URLSessionExtension.swift in Sources */,
 				B0A54CA4242FB2F400C52FCD /* Wrappable.swift in Sources */,
+				B0A54CCC243002D000C52FCD /* StringExtension.swift in Sources */,
 				B0A54CC2242FED6400C52FCD /* UIViewExtension.swift in Sources */,
 				B0A54CAC242FBEDE00C52FCD /* HTTPLayer.swift in Sources */,
 				B00CD982242FA3B60045F9FB /* AppDelegate.swift in Sources */,
