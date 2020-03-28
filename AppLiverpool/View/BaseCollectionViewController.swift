@@ -17,6 +17,10 @@ class BaseCollectionViewController: UICollectionViewController {
     var viewModel: ViewModel!
     var pageCounter: Int!
     
+    fileprivate let sectionInsets = UIEdgeInsets(top: 10.0, left: 5.0, bottom: 10.0, right: 5.0)
+    fileprivate let numberOfItems: Int = 5
+    var layout: UICollectionViewFlowLayout!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,11 +28,13 @@ class BaseCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+//        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView?.register(UINib(nibName: "ItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
+        setCollectionViewLayout()
         title = "Liverpool"
         ViewModel.reset()
         viewModel = ViewModel.shared
-        pageCounter = 0
+        pageCounter = 1
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.masterColor]
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.masterColor]
         setSearchController()
@@ -36,9 +42,46 @@ class BaseCollectionViewController: UICollectionViewController {
         
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: { [weak self] in
+            self?.setCollectionViewLayout()
+            
+        })
+    }
+    
+    func setCollectionViewLayout() {
+            UIView.animate(withDuration: 0.3, animations: { [unowned self] in
+                let collectionViewFrame = self.collectionView?.frame ?? .zero
+                
+                let itemsPerWidth: CGFloat = 2.0
+                let paddingSpaceWidth = self.sectionInsets.left * (itemsPerWidth + 1.0)
+                let availableWidth = collectionViewFrame.width - paddingSpaceWidth
+                let widthPerItem = availableWidth / itemsPerWidth
+
+                let itemsPerHeight: CGFloat = 3.0
+                let paddingSpaceHeight = self.sectionInsets.bottom * (itemsPerHeight + 1.0)
+                let availableHeight = collectionViewFrame.height - paddingSpaceHeight
+                let heightPerItem = availableHeight / itemsPerHeight
+                
+                self.layout = UICollectionViewFlowLayout()
+    //            self.layout.scrollDirection = .horizontal
+                self.layout?.itemSize = CGSize(width: widthPerItem, height: heightPerItem)
+                self.layout?.minimumInteritemSpacing = 5
+                self.layout?.minimumLineSpacing = 5
+                self.layout?.headerReferenceSize = .zero
+                self.layout?.sectionInset = self.sectionInsets
+                
+                self.collectionView?.collectionViewLayout = self.layout
+                
+            })
+        }
+    
     func searchFor(text: String) {
         viewModel?.getItems(with: text.uppercased(), pageNumber: pageCounter, itemsPerPage: 20, onSuccess: { apiResponse in
-            debugPrint(apiResponse)
+            DispatchQueue.main.async { [weak self] in
+                self?.collectionView?.reloadData()
+            }
         }, onError: { error in
             debugPrint(error)
             
@@ -52,32 +95,30 @@ class BaseCollectionViewController: UICollectionViewController {
         searchController = UISearchController(searchResultsController: resultsController)
         navigationItem.searchController = searchController
         searchController?.searchBar.tintColor = .masterColor
-        searchController?.searchBar.delegate = self
+        searchController?.searchBar.delegate = resultsController
         
     }
 
     // MARK: UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return viewModel?.numberOfItems ?? 0
+        
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ItemCollectionViewCell
+        cell.tag = indexPath.item
+        viewModel?.set(with: cell)
         return cell
+        
     }
 
     // MARK: UICollectionViewDelegate
-
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
@@ -107,20 +148,4 @@ class BaseCollectionViewController: UICollectionViewController {
     }
     */
 
-}
-
-extension BaseCollectionViewController: UISearchBarDelegate {
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        debugPrint("didBeginEditing")
-        
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        debugPrint("searchButtonClicked")
-        
-    }
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        debugPrint("textDidChange: \(searchText)")
-        
-    }
 }

@@ -28,8 +28,24 @@ class ViewModel: HTTPLayer {
     }
 }
 
+// MARK: Computed vars
 extension ViewModel {
-    func set(with view: UIView) {
+    var records: [Record]? {
+        return apiResponse?.plpResults?.records
+        
+    }
+    
+    var numberOfItems: Int? {
+        return apiResponse?.plpResults?.records.count
+        
+    }
+}
+
+extension ViewModel {
+    func set(with view: ItemCollectionViewCell) {
+        guard let record = records?[view.tag] else { return }
+        view.containerView?.makeViewWith(features: [.rounded, .bordered(.lightGray, 1)])
+        view.imageViewCell?.getImage(from: record.smImage ?? "")
         
     }
 }

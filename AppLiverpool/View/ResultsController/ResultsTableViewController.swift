@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ResultsTableViewController: UITableViewController {
+class ResultsTableViewController: BaseTableViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,4 +87,20 @@ class ResultsTableViewController: UITableViewController {
     }
     */
     
+}
+
+extension ResultsTableViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        debugPrint("didBeginEditing")
+        
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        debugPrint("searchButtonClicked")
+        
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        debugPrint("textDidChange: \(searchText)")
+        
+    }
 }

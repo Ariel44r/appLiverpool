@@ -41,7 +41,7 @@ extension UIImageView {
                                     
                                 }
                             } else {
-                                DispatchQueue.main.async { [weak self] in
+                                DispatchQueue.main.async {
                                     activityView.stopAnimating()
                                     activityView.removeFromSuperview()
 //                                    self?.image = #imageLiteral(resourceName: "shadow_asset_details_page")
