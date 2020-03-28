@@ -28,7 +28,8 @@
 		B0A54CBF242FEC8C00C52FCD /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A54CBD242FEC8C00C52FCD /* ItemCollectionViewCell.swift */; };
 		B0A54CC0242FEC8C00C52FCD /* ItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A54CBE242FEC8C00C52FCD /* ItemCollectionViewCell.xib */; };
 		B0A54CC2242FED6400C52FCD /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A54CC1242FED6400C52FCD /* UIViewExtension.swift */; };
-		B0A54CC5242FF6CB00C52FCD /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A54CC4242FF6CB00C52FCD /* DetailTableViewController.swift */; };
+		B0A54CC8242FFF1F00C52FCD /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A54CC6242FFF1F00C52FCD /* ItemTableViewCell.swift */; };
+		B0A54CC9242FFF1F00C52FCD /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A54CC7242FFF1F00C52FCD /* ItemTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +77,8 @@
 		B0A54CBD242FEC8C00C52FCD /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		B0A54CBE242FEC8C00C52FCD /* ItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		B0A54CC1242FED6400C52FCD /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		B0A54CC4242FF6CB00C52FCD /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
+		B0A54CC6242FFF1F00C52FCD /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		B0A54CC7242FFF1F00C52FCD /* ItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,7 +203,6 @@
 				B00CD987242FA3B60045F9FB /* Main.storyboard */,
 				B0A54CA1242FA80500C52FCD /* BaseTableViewController.swift */,
 				B0A54CB4242FCEF800C52FCD /* BaseCollectionViewController.swift */,
-				B0A54CC4242FF6CB00C52FCD /* DetailTableViewController.swift */,
 				B0A54CC3242FF52D00C52FCD /* ItemCollectionCell */,
 				B0A54CBC242FEAC100C52FCD /* ResultsController */,
 			);
@@ -213,6 +214,7 @@
 			children = (
 				B0A54CB8242FEABC00C52FCD /* ResultsTableViewController.swift */,
 				B0A54CB9242FEABC00C52FCD /* ResultsTableViewController.xib */,
+				B0A54CCA242FFF2300C52FCD /* SubViews */,
 			);
 			path = ResultsController;
 			sourceTree = "<group>";
@@ -224,6 +226,15 @@
 				B0A54CBE242FEC8C00C52FCD /* ItemCollectionViewCell.xib */,
 			);
 			path = ItemCollectionCell;
+			sourceTree = "<group>";
+		};
+		B0A54CCA242FFF2300C52FCD /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				B0A54CC6242FFF1F00C52FCD /* ItemTableViewCell.swift */,
+				B0A54CC7242FFF1F00C52FCD /* ItemTableViewCell.xib */,
+			);
+			path = SubViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,6 +345,7 @@
 				B00CD98E242FA3B90045F9FB /* LaunchScreen.storyboard in Resources */,
 				B0A54CC0242FEC8C00C52FCD /* ItemCollectionViewCell.xib in Resources */,
 				B00CD98B242FA3B90045F9FB /* Assets.xcassets in Resources */,
+				B0A54CC9242FFF1F00C52FCD /* ItemTableViewCell.xib in Resources */,
 				B00CD989242FA3B60045F9FB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,8 +377,8 @@
 				B0A54CA4242FB2F400C52FCD /* Wrappable.swift in Sources */,
 				B0A54CC2242FED6400C52FCD /* UIViewExtension.swift in Sources */,
 				B0A54CAC242FBEDE00C52FCD /* HTTPLayer.swift in Sources */,
-				B0A54CC5242FF6CB00C52FCD /* DetailTableViewController.swift in Sources */,
 				B00CD982242FA3B60045F9FB /* AppDelegate.swift in Sources */,
+				B0A54CC8242FFF1F00C52FCD /* ItemTableViewCell.swift in Sources */,
 				B0A54CA2242FA80500C52FCD /* BaseTableViewController.swift in Sources */,
 				B0A54CB7242FE69D00C52FCD /* UIImageViewExtension.swift in Sources */,
 				B0A54CAE242FBFC900C52FCD /* ViewModel.swift in Sources */,

@@ -51,15 +51,17 @@ class BaseCollectionViewController: UICollectionViewController {
     }
     
     func setCollectionViewLayout() {
+        let size = view.frame.size
+        let isLandscapeOrientation: Bool = size.width > size.height
             UIView.animate(withDuration: 0.3, animations: { [unowned self] in
                 let collectionViewFrame = self.collectionView?.frame ?? .zero
                 
-                let itemsPerWidth: CGFloat = 2.0
+                let itemsPerWidth: CGFloat = isLandscapeOrientation ? 3.0 : 2.0
                 let paddingSpaceWidth = self.sectionInsets.left * (itemsPerWidth + 1.0)
                 let availableWidth = collectionViewFrame.width - paddingSpaceWidth
                 let widthPerItem = availableWidth / itemsPerWidth
 
-                let itemsPerHeight: CGFloat = 3.0
+                let itemsPerHeight: CGFloat = isLandscapeOrientation ? 2.0 : 3.0
                 let paddingSpaceHeight = self.sectionInsets.bottom * (itemsPerHeight + 1.0)
                 let availableHeight = collectionViewFrame.height - paddingSpaceHeight
                 let heightPerItem = availableHeight / itemsPerHeight
@@ -115,6 +117,11 @@ class BaseCollectionViewController: UICollectionViewController {
         cell.tag = indexPath.item
         viewModel?.set(with: cell)
         return cell
+        
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "detailSegue", sender: nil)
         
     }
 
