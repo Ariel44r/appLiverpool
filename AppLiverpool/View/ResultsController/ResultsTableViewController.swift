@@ -26,7 +26,6 @@ class ResultsTableViewController: BaseTableViewController {
     func searchFor(text: String) {
         viewModel?.getItems(with: text.uppercased(), pageNumber: pageCounter, itemsPerPage: 20, onSuccess: { apiResponse in
             DispatchQueue.main.async { [weak self] in
-                self?.viewModel?.saveLastData(response: apiResponse)
                 self?.tableView?.reloadSections(IndexSet(arrayLiteral: 0), with: .automatic)
                 
             }

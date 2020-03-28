@@ -11,13 +11,7 @@ import UIKit
 class ViewModel: HTTPLayer {
     static var shared: ViewModel = ViewModel()
     let userDefaultKey: String = "lastQueryData"
-    var lastDataQuery: APIResponse? {
-        guard let jsonString = UserDefaults.standard.value(forKey: userDefaultKey) as? String,
-        let data = jsonString.data(using: .utf8),
-        let object = try? JSONDecoder().decode(APIResponse.self, from: data) else { return nil }
-        return object
-        
-    }
+    var lastDataQuery: APIResponse!
     
     private override init() { }
     var apiResponse: APIResponse!
@@ -31,6 +25,7 @@ class ViewModel: HTTPLayer {
         let endPoint: String = "\(baseURL)/plp?force-plp=true&search-string=\(searchText)&page-number=\(pageNumber)&number-of-items-per-page=\(itemsPerPage)"
         sendHTTPRequest(with: [ .endPoint(endPoint), .mimeType(.urlEncoded), .method(.GET) ], onSuccess: { [weak self] (response: APIResponse) in
             self?.apiResponse = response
+            self?.saveLastData(response: response)
             onSuccess(response)
         }, onError: onError)
     }
@@ -43,6 +38,13 @@ class ViewModel: HTTPLayer {
 
 // MARK: Computed vars & transform methods
 extension ViewModel {
+    var lastDataQueryComputed: APIResponse? {
+        guard let jsonString = UserDefaults.standard.value(forKey: userDefaultKey) as? String,
+        let data = jsonString.data(using: .utf8),
+        let object = try? JSONDecoder().decode(APIResponse.self, from: data) else { return nil }
+        return object
+        
+    }
     var records: [Record]? {
         return apiResponse?.plpResults?.records
         

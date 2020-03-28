@@ -16,7 +16,6 @@ class BaseCollectionViewController: UICollectionViewController {
     var resultsController: ResultsTableViewController!
     var viewModel: ViewModel!
     var pageCounter: Int!
-    var lastDataQuery: APIResponse!
     
     fileprivate let sectionInsets = UIEdgeInsets(top: 10.0, left: 5.0, bottom: 10.0, right: 5.0)
     fileprivate let numberOfItems: Int = 5
@@ -39,8 +38,8 @@ class BaseCollectionViewController: UICollectionViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.masterColor]
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.masterColor]
         setSearchController()
-        if let lastDataQuery = viewModel?.lastDataQuery {
-            self.lastDataQuery = lastDataQuery
+        if let lastDataQuery = viewModel?.lastDataQueryComputed {
+            self.viewModel?.lastDataQuery = lastDataQuery
             collectionView?.reloadData()
         } else {
             searchFor(text: "xbox")
@@ -87,8 +86,7 @@ class BaseCollectionViewController: UICollectionViewController {
     func searchFor(text: String) {
         viewModel?.getItems(with: text.uppercased(), pageNumber: pageCounter, itemsPerPage: 20, onSuccess: { apiResponse in
             DispatchQueue.main.async { [weak self] in
-                self?.viewModel?.saveLastData(response: apiResponse)
-                self?.lastDataQuery = apiResponse
+                self?.viewModel?.lastDataQuery = apiResponse
                 self?.collectionView?.reloadData()
             }
         }, onError: { error in
@@ -116,7 +114,7 @@ class BaseCollectionViewController: UICollectionViewController {
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.lastDataQuery?.plpResults?.records?.count ?? 0
+        return self.viewModel?.lastDataQuery?.plpResults?.records?.count ?? 0
         
     }
 
