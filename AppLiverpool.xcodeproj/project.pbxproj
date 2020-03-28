@@ -18,6 +18,8 @@
 		B0A54CA4242FB2F400C52FCD /* Wrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A54CA3242FB2F400C52FCD /* Wrappable.swift */; };
 		B0A54CA6242FB78A00C52FCD /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A54CA5242FB78A00C52FCD /* URLSessionExtension.swift */; };
 		B0A54CA8242FBA1B00C52FCD /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A54CA7242FBA1B00C52FCD /* UIColorExtension.swift */; };
+		B0A54CAC242FBEDE00C52FCD /* HTTPLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A54CAB242FBEDE00C52FCD /* HTTPLayer.swift */; };
+		B0A54CAE242FBFC900C52FCD /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A54CAD242FBFC900C52FCD /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		B0A54CA3242FB2F400C52FCD /* Wrappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wrappable.swift; sourceTree = "<group>"; };
 		B0A54CA5242FB78A00C52FCD /* URLSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtension.swift; sourceTree = "<group>"; };
 		B0A54CA7242FBA1B00C52FCD /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		B0A54CAB242FBEDE00C52FCD /* HTTPLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPLayer.swift; sourceTree = "<group>"; };
+		B0A54CAD242FBFC900C52FCD /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,9 +112,9 @@
 				B00CD981242FA3B60045F9FB /* AppDelegate.swift */,
 				B00CD983242FA3B60045F9FB /* SceneDelegate.swift */,
 				B0A54CA1242FA80500C52FCD /* BaseTableViewController.swift */,
-				B0A54CA3242FB2F400C52FCD /* Wrappable.swift */,
-				B0A54CA5242FB78A00C52FCD /* URLSessionExtension.swift */,
-				B0A54CA7242FBA1B00C52FCD /* UIColorExtension.swift */,
+				B0A54CAD242FBFC900C52FCD /* API.swift */,
+				B0A54CAA242FBEA700C52FCD /* HTTPLayer */,
+				B0A54CA9242FBE9B00C52FCD /* Extensions */,
 				B00CD987242FA3B60045F9FB /* Main.storyboard */,
 				B00CD98A242FA3B90045F9FB /* Assets.xcassets */,
 				B00CD98C242FA3B90045F9FB /* LaunchScreen.storyboard */,
@@ -135,6 +139,24 @@
 				B00CD9A5242FA3B90045F9FB /* Info.plist */,
 			);
 			path = AppLiverpoolUITests;
+			sourceTree = "<group>";
+		};
+		B0A54CA9242FBE9B00C52FCD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B0A54CA5242FB78A00C52FCD /* URLSessionExtension.swift */,
+				B0A54CA7242FBA1B00C52FCD /* UIColorExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B0A54CAA242FBEA700C52FCD /* HTTPLayer */ = {
+			isa = PBXGroup;
+			children = (
+				B0A54CA3242FB2F400C52FCD /* Wrappable.swift */,
+				B0A54CAB242FBEDE00C52FCD /* HTTPLayer.swift */,
+			);
+			path = HTTPLayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,8 +293,10 @@
 				B0A54CA8242FBA1B00C52FCD /* UIColorExtension.swift in Sources */,
 				B0A54CA6242FB78A00C52FCD /* URLSessionExtension.swift in Sources */,
 				B0A54CA4242FB2F400C52FCD /* Wrappable.swift in Sources */,
+				B0A54CAC242FBEDE00C52FCD /* HTTPLayer.swift in Sources */,
 				B00CD982242FA3B60045F9FB /* AppDelegate.swift in Sources */,
 				B0A54CA2242FA80500C52FCD /* BaseTableViewController.swift in Sources */,
+				B0A54CAE242FBFC900C52FCD /* API.swift in Sources */,
 				B00CD984242FA3B60045F9FB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
