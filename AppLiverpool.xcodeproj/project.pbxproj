@@ -28,6 +28,7 @@
 		B0A54CBF242FEC8C00C52FCD /* ItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A54CBD242FEC8C00C52FCD /* ItemCollectionViewCell.swift */; };
 		B0A54CC0242FEC8C00C52FCD /* ItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A54CBE242FEC8C00C52FCD /* ItemCollectionViewCell.xib */; };
 		B0A54CC2242FED6400C52FCD /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A54CC1242FED6400C52FCD /* UIViewExtension.swift */; };
+		B0A54CC5242FF6CB00C52FCD /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A54CC4242FF6CB00C52FCD /* DetailTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		B0A54CBD242FEC8C00C52FCD /* ItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		B0A54CBE242FEC8C00C52FCD /* ItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		B0A54CC1242FED6400C52FCD /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		B0A54CC4242FF6CB00C52FCD /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 				B00CD987242FA3B60045F9FB /* Main.storyboard */,
 				B0A54CA1242FA80500C52FCD /* BaseTableViewController.swift */,
 				B0A54CB4242FCEF800C52FCD /* BaseCollectionViewController.swift */,
+				B0A54CC4242FF6CB00C52FCD /* DetailTableViewController.swift */,
 				B0A54CC3242FF52D00C52FCD /* ItemCollectionCell */,
 				B0A54CBC242FEAC100C52FCD /* ResultsController */,
 			);
@@ -362,6 +365,7 @@
 				B0A54CA4242FB2F400C52FCD /* Wrappable.swift in Sources */,
 				B0A54CC2242FED6400C52FCD /* UIViewExtension.swift in Sources */,
 				B0A54CAC242FBEDE00C52FCD /* HTTPLayer.swift in Sources */,
+				B0A54CC5242FF6CB00C52FCD /* DetailTableViewController.swift in Sources */,
 				B00CD982242FA3B60045F9FB /* AppDelegate.swift in Sources */,
 				B0A54CA2242FA80500C52FCD /* BaseTableViewController.swift in Sources */,
 				B0A54CB7242FE69D00C52FCD /* UIImageViewExtension.swift in Sources */,
