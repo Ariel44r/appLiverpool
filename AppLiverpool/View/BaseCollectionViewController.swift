@@ -122,7 +122,7 @@ class BaseCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "detailSegue", sender: nil)
+//        performSegue(withIdentifier: "detailSegue", sender: nil)
         
     }
 
